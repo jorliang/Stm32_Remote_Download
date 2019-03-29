@@ -1,0 +1,13 @@
+@startuml bootloader
+top to bottom direction
+skinparam packageStyle rectangle
+actor 开始
+开始--(读取flash)
+(读取flash)--(启动app):无升级要求
+(读取flash)--(初始化串口):有升级要求
+(初始化串口)--(等待上位机发送握手)
+(等待上位机发送握手)--(握手返回)
+(握手返回)--(串口交互)
+(串口交互)--(启动app)
+(启动app)--(结束)
+@enduml
